@@ -1,0 +1,97 @@
+{% extends 'base_coor.html'%}
+
+{% block title %} Add Slots {% endblock %}
+
+{% block content %}
+
+<section class="section-cl">
+          <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-12 col-md-8 col-lg-6" style="width : 50.66666667%">
+                <div class="card shadow-2-strong login-card">
+                  <div class="card-body p-5 text-center">
+
+                    <h2>Add Slots</h2><br>
+                   <div class="container2">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <h5 style="color: #DFF6FF">{{ message }}</h5>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <br>
+                    <form action="c_slotRecord" method="post">
+                        {% csrf_token %}
+
+                    <div class="form-group">
+                            <div class="row addSlot">
+                                <div class="col-lg-6">
+                                    <label style="font-size: 50%;"> Slot : </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <select class="form-select addSlot" name="selectslot">
+                                        {% for i in selectslots %}
+                                        <option value="{{ i }}"> {{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+{#                                <input type="text" class="form-control" name="batch" placeholder="">#}
+                            </div>
+                            <div class="row addSlot">
+                                <div class="col-lg-6">
+                                    <label style="font-size: 50%;"> Professor : </label>
+                                </div>
+                                <div class = "col-lg-6">
+                                    <select class="form-select addSlot" name="selectprof">
+                                    
+                                        {% for i in selectprofs %}
+                                        <option value="{{ i.first_name }} {{i.last_name}}"> {{ i.first_name }} {{i.last_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+{#                                <input type="text" class="form-control" name="batch" placeholder="">#}
+                            </div>
+                            <div class="row addSlot">
+                                <div class="col-lg-6">
+                                    <label style="font-size: 50%;">Course : </label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <select class="form-select addSlot" name="selectcourse">
+                                    
+                                        {% for i in selectcourses %}
+                                        <option value="{{ i.cid }} {{ i.branch }}"> {{ i.cid }} {{ i.branch }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+{#                                <input type="text" class="form-control" name="batch" placeholder="">#}
+                            </div>
+                        </div>
+                        <br>
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                        
+{#                        <div class="form-group">#}
+{#                            <label class="control-label col-sm-2"> Batch: </label>#}
+{#                            <div class="col-sm-3">#}
+{#                                <select name="selectbatch">#}
+{#                                    {% for ibatch in selectbatches %}#}
+{#                                    <option value="{{ ibatch.bname }}"> {{ ibatch.bname }}</option>#}
+{#                                    {% endfor %}#}
+{#                                </select>#}
+{#                                <input type="text" class="form-control" name="batch" placeholder="">#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <br>#}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+{% endblock %}
